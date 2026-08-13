@@ -1,0 +1,10 @@
+.DS_Store
+
+# Local production files; the team-ready skill is stored in .agents/skills.
+/outputs/
+/work/
+
+# Python cache files created when helper scripts run.
+__pycache__/
+*.py[cod]
+
