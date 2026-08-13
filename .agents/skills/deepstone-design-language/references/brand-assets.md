@@ -26,6 +26,7 @@ The inverse asset was made with a lossless color-only transformation: every visi
 - Medium emphasis: 500.
 - Headings: 600.
 - Italics: use the bundled italic variable font.
+- Office-compatible static faces: use bundled `EBGaramond-Regular.ttf` and `EBGaramond-SemiBold.ttf` for Word/LibreOffice rendering; keep the family name `EB Garamond` in the document.
 
 ### Chinese
 
@@ -41,6 +42,6 @@ Apply EB Garamond as the Latin font and Swei B2 Serif CJKtc as the East Asian fo
 ## Font delivery
 
 - HTML: reference bundled Regular, Medium, and SemiBold local fonts with `@font-face`; do not depend on a CDN in final deliverables.
-- DOCX/PPTX: set the exact font family in styles and include the bundled font files next to the deliverable when embedding is unavailable.
+- DOCX/PPTX: set the exact font family in styles and include the bundled static Office faces and CJK fonts next to the deliverable when embedding is unavailable. For DOCX headings and display text, also set explicit `ascii`, `hAnsi`, `cs`, and `eastAsia` run-font attributes and remove theme-font attributes; do not rely on style inheritance alone.
 - PDF: embed fonts whenever supported and inspect the final PDF for substitution.
 - Licenses: retain both OFL files in `assets/fonts/` whenever fonts are redistributed.

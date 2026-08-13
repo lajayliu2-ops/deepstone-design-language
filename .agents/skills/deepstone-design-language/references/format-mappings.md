@@ -53,6 +53,7 @@ Check keyboard focus, contrast, responsive overflow, heading order, reduced moti
 - Body: 9.5–11pt; leading 1.15–1.35 depending on density.
 - Use a restrained header/footer with document title, section, date, and page number.
 - Set Latin run fonts to `EB Garamond` and East Asian run fonts to `Swei B2 Serif CJKtc` in styles and direct runs. Include the bundled font files with delivery when font embedding is unavailable.
+- Harden Heading 1–3 and all display/callout-title runs against Office theme fallback: set explicit `ascii`, `hAnsi`, and `cs` to `EB Garamond`, set `eastAsia` to `Swei B2 Serif CJKtc`, and remove `*Theme` font attributes. A heading style without matching direct run fonts does not pass QA.
 - Use the official white logo on dark cover bands and the official color logo in light headers or covers.
 - Place the logo once per page at the upper-right. In Word, use a right-aligned header for light interior pages; for a dark first-page cover, use a separate first-page header or a right-aligned logo inside the cover's top band so the inverse logo sits on dark. Do not duplicate the logo in both places.
 - Align the logo's right edge to the 18–28mm right page margin selected for the document. Recommended rendered width: 34–48mm, reduced only when the page format requires it while respecting the 32mm minimum.
@@ -74,7 +75,7 @@ Create named paragraph styles for Title, Subtitle, Heading 1–3, Body, Lead, Ca
 
 ### Word QA
 
-Check widow/orphan control, table splitting, page breaks, heading hierarchy, TOC accuracy, page numbers, image resolution, and whether every page has a deliberate visual anchor.
+Check widow/orphan control, table splitting, page breaks, heading hierarchy, TOC accuracy, page numbers, image resolution, and whether every page has a deliberate visual anchor. Inspect rendered Heading 1/2, callout titles, numbered-step titles, bullets, and body copy together; reject any sans-serif or theme-font fallback.
 
 ## PowerPoint / PPTX
 
