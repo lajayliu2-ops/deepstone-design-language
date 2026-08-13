@@ -1,6 +1,6 @@
 # Deepstone Design System
 
-Status: `v1.1 Figma-calibrated core + document placement rules`. Core homepage colors, typography, layout, buttons, cards, gradients, and bilingual behavior were read from the source Figma nodes listed in `assets/tokens.json`. Tokens marked as derived remain adaptable where the Figma file has no named variable.
+Status: `v1.1.1 Figma-calibrated core + document placement and Word font-hardening rules`. Core homepage colors, typography, layout, buttons, cards, gradients, and bilingual behavior were read from the source Figma nodes listed in `assets/tokens.json`. Tokens marked as derived remain adaptable where the Figma file has no named variable.
 
 ## 1. Brand character
 
@@ -47,6 +47,7 @@ Typography is a system of ratios, not a collection of decorative font choices.
 - Do not substitute another typeface when the bundled fonts can be installed, linked, or embedded.
 - Emergency fallback only: Georgia for Latin and Songti SC / SimSun for Chinese. Mark the output as provisional when fallback is used.
 - Do not introduce a third display or body family.
+- In Word, do not rely only on inherited Heading styles for brand typography. Keep semantic Heading 1–3 styles, and also write explicit Latin/East Asian run-font attributes on every heading, callout title, and other display run so Office theme fonts cannot replace the brand fonts.
 
 ### Hierarchy
 

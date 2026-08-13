@@ -76,6 +76,9 @@ An artifact passes only when all applicable gates are true.
 ### DOCX
 
 - Named styles are used consistently.
+- Heading and display runs explicitly declare EB Garamond for Latin and Swei B2 Serif CJKtc for East Asian text; no Office theme-font attributes remain on those runs.
+- Rendered Heading 1/2, callout titles, numbered-step titles, bullets, and body text form one coordinated serif system with no unexplained sans-serif fallback.
+- When a PDF render is available for QA, its font inventory identifies EB Garamond rather than a substituted Latin family.
 - The right-aligned header or first-page cover anchor contains one logo only; there is no upper-left or duplicate logo.
 - No unintended blank pages, split headings, clipped tables, or isolated captions.
 - Page numbers and TOC are correct when present.

@@ -65,6 +65,7 @@ Mandatory in every format:
 - for Word/PDF document pages, exactly one logo at the upper-right, right-edge aligned to the page margin;
 - mandatory client-document first-page copy: `{项目名称} · {年份}` above the title, `Reinventing Real-World Value Onchain` immediately above the main title, and `仅供授权客户参考` in the lower-right confidentiality position;
 - EB Garamond for Latin and Swei B2 Serif CJKtc for Chinese;
+- in DOCX, semantic heading styles plus explicit brand-font attributes on every heading/display run so Office theme fonts cannot override the visual system;
 - Figma-calibrated tokens from `assets/tokens.json`;
 - editorial whitespace and exact alignment;
 - one dominant message per page, slide, or screen section;
