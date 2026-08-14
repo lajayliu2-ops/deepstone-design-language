@@ -1,6 +1,6 @@
 interface:
   display_name: "Deepstone Design Language"
-  short_description: "Generate consistent Deepstone HTML, Word, PPT and PDF artifacts"
+  short_description: "Generate DeepStone HTML, Word, PPT and PDF deliverables"
   icon_large: "./assets/logos/deepstone-logo-color.png"
   brand_color: "#0A0A1E"
-  default_prompt: "Use $deepstone-design-language to turn my natural-language brief into a verified DeepStone HTML, Word, PowerPoint, or PDF deliverable."
+  default_prompt: "Use $deepstone-design-language to turn my brief into a verified DeepStone HTML, Word, PowerPoint, or PDF deliverable; for HTML, include a meaningfully named client-ready standalone file and the complete source folder."

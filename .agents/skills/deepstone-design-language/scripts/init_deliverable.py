@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -18,6 +19,22 @@ TEMPLATE_MAP = {
     "pptx": ("deepstone-starter.pptx", "DeepStone-template.pptx"),
     "pdf": ("deepstone-reference.pdf", "DeepStone-reference.pdf"),
 }
+
+
+def confidentiality_copy(language: str) -> str:
+    """Chinese only for pure Chinese briefs; English for English or bilingual briefs."""
+    normalized = language.strip().lower().replace("_", "-")
+    chinese_only_tags = {"zh", "zh-cn", "zh-sg", "zh-tw", "zh-hk", "zh-hans", "zh-hant"}
+    return "仅供授权客户参考" if normalized in chinese_only_tags else "For Authorized Clients Only"
+
+
+def standalone_filename(title: str) -> str:
+    """Create a recognizable, client-ready standalone HTML filename."""
+    base = re.sub(r"[^\w]+", "_", title, flags=re.UNICODE).strip("_")
+    base = base[:120].rstrip("_") or "DeepStone_Deliverable"
+    if "deepstone" not in base.lower():
+        base += "_DeepStone"
+    return f"{base}_Standalone.html"
 
 
 def write_new(path: Path, content: str) -> None:
@@ -87,8 +104,17 @@ def main() -> None:
             "latin_font": "EB Garamond",
             "cjk_font": "Swei B2 Serif CJKtc",
             "tokens": "assets/tokens.json",
+            "confidentiality": confidentiality_copy(args.language),
         },
     }
+    if "html" in formats:
+        brief["html_delivery"] = {
+            "source_folder": ".",
+            "source_entry": "index.html",
+            "standalone_entry": standalone_filename(args.title),
+            "standalone_required": True,
+            "standalone_is_primary_delivery": True,
+        }
     write_new(output_dir / "deepstone-brief.json", json.dumps(brief, ensure_ascii=False, indent=2) + "\n")
 
     content_map = """# Canonical content map\n\n| ID | Role | Source | Content | Format notes |\n|---|---|---|---|---|\n| U01 | headline | user |  |  |\n| U02 | argument | user |  |  |\n| U03 | proof | user/file |  |  |\n| U04 | action | user |  |  |\n"""
@@ -100,11 +126,16 @@ def main() -> None:
         "checks": [
             {"id": "brand.logo", "status": "pending", "evidence": ""},
             {"id": "brand.fonts", "status": "pending", "evidence": ""},
+            {"id": "brand.confidentiality_language", "status": "pending", "evidence": ""},
             {"id": "content.no_invention", "status": "pending", "evidence": ""},
             {"id": "layout.hierarchy", "status": "pending", "evidence": ""},
             {"id": "layout.overflow", "status": "pending", "evidence": ""},
             {"id": "accessibility.contrast", "status": "pending", "evidence": ""},
             {"id": "render.visual_inspection", "status": "pending", "evidence": ""},
+            {"id": "html.source_folder_preserved", "status": "pending" if "html" in formats else "not_applicable", "evidence": ""},
+            {"id": "html.standalone_assets_embedded", "status": "pending" if "html" in formats else "not_applicable", "evidence": ""},
+            {"id": "html.standalone_visual_parity", "status": "pending" if "html" in formats else "not_applicable", "evidence": ""},
+            {"id": "html.client_ready_filename", "status": "pending" if "html" in formats else "not_applicable", "evidence": ""},
             {"id": "cross_format.semantic_parity", "status": "pending", "evidence": ""},
         ],
     }

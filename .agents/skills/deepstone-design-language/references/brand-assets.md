@@ -41,7 +41,8 @@ Apply EB Garamond as the Latin font and Swei B2 Serif CJKtc as the East Asian fo
 
 ## Font delivery
 
-- HTML: reference bundled Regular, Medium, and SemiBold local fonts with `@font-face`; do not depend on a CDN in final deliverables.
+- HTML editable source folder: reference bundled Regular, Medium, and SemiBold local fonts with `@font-face`; do not depend on a CDN in final deliverables.
+- HTML standalone delivery: run `scripts/build_standalone_html.py` after final source edits so the official logo, fonts, images, local stylesheets, icons, and scripts are embedded as data or inline content. Preserve the source folder separately; never make the standalone file the only editable source.
 - DOCX/PPTX: set the exact font family in styles and include the bundled static Office faces and CJK fonts next to the deliverable when embedding is unavailable. For DOCX headings and display text, also set explicit `ascii`, `hAnsi`, `cs`, and `eastAsia` run-font attributes and remove theme-font attributes; do not rely on style inheritance alone.
 - PDF: embed fonts whenever supported and inspect the final PDF for substitution.
 - Licenses: retain both OFL files in `assets/fonts/` whenever fonts are redistributed.

@@ -15,7 +15,7 @@ Use this file after reading `design-system.md`. Preserve shared tokens and hiera
 - Use a responsive 12/8/4-column system and container queries or media queries where appropriate.
 - Maintain a readable text measure of 55–75 characters for prose.
 - Use one H1 per page and a valid heading hierarchy.
-- For document-style HTML, use the mandatory cover copy: `{项目名称} · {年份}` in the top identifier, `Reinventing Real-World Value Onchain` above the H1, and `仅供授权客户参考` at lower right.
+- For document-style HTML, use the mandatory cover copy: `{项目名称} · {年份}` in the top identifier, `Reinventing Real-World Value Onchain` above the H1, and the localized confidentiality statement at lower right: Chinese-only `仅供授权客户参考`; English and Chinese-English bilingual `For Authorized Clients Only`.
 
 ### Page sequence
 
@@ -44,6 +44,14 @@ Remove sections that do not serve the brief. Do not fill the sequence with inven
 
 Check keyboard focus, contrast, responsive overflow, heading order, reduced motion, alt text, print styling, and real content length.
 
+### HTML delivery
+
+- Preserve the complete editable folder containing `index.html`, `assets/`, tokens, source media, brief, content map, and QA checklist.
+- After the final source edit, run `python scripts/build_standalone_html.py OUTPUT_DIR/index.html`. The default output name is read from `deepstone-brief.json` or derived from the HTML title using `{Project}_{Document}_DeepStone_Standalone.html`.
+- Treat the named standalone file as the primary file for individual sharing. It must embed all local presentation assets, including both DeepStone logo variants when referenced, EB Garamond, Swei B2 Serif CJKtc, images, local CSS, icons, and local JavaScript.
+- Fail the standalone build when a referenced local asset is missing or a remote presentation asset remains. Use `--allow-remote-assets` only when the user explicitly accepts online dependencies.
+- Render the source and named standalone versions at the same desktop and mobile widths and verify visual parity before delivery.
+
 ## Word / DOCX
 
 ### Page setup
@@ -58,7 +66,7 @@ Check keyboard focus, contrast, responsive overflow, heading order, reduced moti
 - Place the logo once per page at the upper-right. In Word, use a right-aligned header for light interior pages; for a dark first-page cover, use a separate first-page header or a right-aligned logo inside the cover's top band so the inverse logo sits on dark. Do not duplicate the logo in both places.
 - Align the logo's right edge to the 18–28mm right page margin selected for the document. Recommended rendered width: 34–48mm, reduced only when the page format requires it while respecting the 32mm minimum.
 - Translate the approved dark gradient to a solid `color.navy` band when Word cannot render the gradient reliably; do not introduce a new Office theme color.
-- On page one, use `{项目名称} · {年份}` above the title, `Reinventing Real-World Value Onchain` immediately above the main title, and `仅供授权客户参考` in the lower-right confidentiality position.
+- On page one, use `{项目名称} · {年份}` above the title, `Reinventing Real-World Value Onchain` immediately above the main title, and the localized lower-right confidentiality statement: Chinese-only `仅供授权客户参考`; English and Chinese-English bilingual `For Authorized Clients Only`.
 
 ### Mapping
 
@@ -89,7 +97,7 @@ Check widow/orphan control, table splitting, page breaks, heading hierarchy, TOC
 - Set Latin text to `EB Garamond` and Chinese text to `Swei B2 Serif CJKtc`. Include the bundled fonts with delivery if the deck cannot embed them.
 - Place the white logo on navy slides and the color logo on paper/mist slides. Never recreate the logo with editable text.
 - Use `color.navy` as the projection-safe fallback for `gradient.darkBand`; use `color.blue` or `color.navy` as a solid heading color instead of rasterizing gradient text.
-- On slide one, use `{项目名称} · {年份}` in the top project identifier, `Reinventing Real-World Value Onchain` above the main title, and `仅供授权客户参考` at lower right.
+- On slide one, use `{项目名称} · {年份}` in the top project identifier, `Reinventing Real-World Value Onchain` above the main title, and the localized confidentiality statement at lower right: Chinese-only `仅供授权客户参考`; English and Chinese-English bilingual `For Authorized Clients Only`.
 
 ### Slide grammar
 
@@ -137,7 +145,7 @@ Choose the source format based on reading behavior:
 - Include bookmarks for reports longer than ten pages when practical.
 - Keep important tables and figures with their captions.
 - Avoid color-dependent meaning; labels must remain understandable in grayscale.
-- Preserve the source document's mandatory first-page cover copy exactly: `{项目名称} · {年份}`, `Reinventing Real-World Value Onchain`, and `仅供授权客户参考`.
+- Preserve the source document's mandatory first-page cover copy exactly: `{项目名称} · {年份}`, `Reinventing Real-World Value Onchain`, and the applicable localized confidentiality statement. Chinese-only uses `仅供授权客户参考`; English and Chinese-English bilingual use `For Authorized Clients Only`.
 
 ### PDF QA
 

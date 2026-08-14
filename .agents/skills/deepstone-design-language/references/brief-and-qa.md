@@ -62,7 +62,7 @@ An artifact passes only when all applicable gates are true.
 - Meets accessible contrast and readable minimum type sizes.
 - Contains no invented evidence.
 - Has been rendered and visually inspected.
-- Every client-facing document cover uses `{项目名称} · {年份}`, `Reinventing Real-World Value Onchain`, and `仅供授权客户参考` in their prescribed positions.
+- Every client-facing document cover uses `{项目名称} · {年份}`, `Reinventing Real-World Value Onchain`, and the language-aware confidentiality statement in their prescribed positions. Chinese-only uses `仅供授权客户参考`; English and Chinese-English bilingual use `For Authorized Clients Only`.
 - Every Word/PDF document page uses exactly one DeepStone logo at the upper-right, aligned to the right page margin, with the correct light/dark asset.
 
 ### HTML
@@ -72,6 +72,10 @@ An artifact passes only when all applicable gates are true.
 - Keyboard focus is visible.
 - Motion has pause/reduced-motion behavior.
 - Print output is intentional if PDF export is expected.
+- The complete editable source folder is preserved and delivered.
+- A meaningfully named `{Project}_{Document}_DeepStone_Standalone.html` is generated after the final source edit and embeds every local presentation asset required for offline rendering.
+- The named standalone file is the primary client/team delivery; `index.html` is identified only as editable source.
+- Source `index.html` and the named standalone file have been rendered at matching desktop and mobile widths and are visually equivalent.
 
 ### DOCX
 

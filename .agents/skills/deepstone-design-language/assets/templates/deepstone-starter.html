@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deepstone Design Language</title>
   <style>
-    @font-face{font-family:"EB Garamond";src:url("assets/fonts/EBGaramond-Variable.ttf") format("truetype");font-style:normal;font-weight:400 800;font-display:swap}
+    @font-face{font-family:"EB Garamond";src:url("assets/fonts/EBGaramond-Regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:"EB Garamond";src:url("assets/fonts/EBGaramond-SemiBold.ttf") format("truetype");font-style:normal;font-weight:600 800;font-display:swap}
     @font-face{font-family:"EB Garamond";src:url("assets/fonts/EBGaramond-Italic-Variable.ttf") format("truetype");font-style:italic;font-weight:400 800;font-display:swap}
     @font-face{font-family:"Swei B2 Serif CJKtc";src:url("assets/fonts/SweiB2SerifCJKtc-Regular.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
     @font-face{font-family:"Swei B2 Serif CJKtc";src:url("assets/fonts/SweiB2SerifCJKtc-Medium.woff2") format("woff2");font-style:normal;font-weight:500;font-display:swap}
@@ -19,7 +20,7 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--ds-paper);color:var(--ds-ink);font-family:"EB Garamond","Swei B2 Serif CJKtc",Georgia,"Songti SC",serif;line-height:1.6667}
+    body{margin:0;background:var(--ds-paper);color:var(--ds-ink);font-family:"EB Garamond","Swei B2 Serif CJKtc",Georgia,"Songti SC",serif;line-height:1.6667;font-synthesis:none}
     html[lang^="zh"] body{font-weight:500}
     a{color:inherit}
     .container{width:min(1136px,calc(100% - 48px));margin-inline:auto}
@@ -43,9 +44,9 @@
     .hero-aside strong{display:block;font-size:42px;line-height:1;margin-bottom:14px}
     .hero-aside span{color:rgba(255,255,255,.62);font-size:14px}
     .section{padding:112px 0}
-    .section-head{display:grid;grid-template-columns:3fr 7fr 2fr;gap:24px;align-items:start;margin-bottom:64px}
+    .section-head{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr) minmax(0,2fr);gap:24px;align-items:start;margin-bottom:64px}
     .section-index{font-size:12px;color:var(--ds-muted);letter-spacing:.12em;text-transform:uppercase}
-    h2{font-size:clamp(32px,3vw,40px);line-height:1.6;letter-spacing:-.02em;margin:0;font-weight:500;background:var(--ds-gradient-text);background-clip:text;-webkit-background-clip:text;color:transparent}
+    h2{min-width:0;font-size:clamp(32px,3vw,40px);line-height:1.6;letter-spacing:-.02em;margin:0;font-weight:500;background:var(--ds-gradient-text);background-clip:text;-webkit-background-clip:text;color:transparent;overflow:visible;overflow-wrap:anywhere;padding-block:.03em .08em}
     .section-note{font-size:14px;color:var(--ds-muted);margin:8px 0 0}
     .principles{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ds-line)}
     .principle{padding:28px 28px 32px 0;border-bottom:1px solid var(--ds-line)}
