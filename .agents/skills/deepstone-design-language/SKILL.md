@@ -1,6 +1,6 @@
 ---
 name: deepstone-design-language
-description: Create or restyle client-facing HTML pages, Word documents, PowerPoint decks, and PDFs in the Deepstone visual language. Use when the user asks for a Deepstone-style website, proposal, report, presentation, one-pager, case study, brochure, PDF, design system, branded artifact, or asks to apply the same design language across formats from a natural-language brief.
+description: Create or restyle client-facing HTML pages, standalone/offline HTML files, Word documents, PowerPoint decks, and PDFs in the Deepstone visual language. Use when the user asks for a Deepstone-style website, proposal, report, presentation, one-pager, case study, brochure, PDF, design system, branded artifact, or asks to apply the same design language across formats from a natural-language brief.
 ---
 
 # Deepstone Design Language
@@ -19,13 +19,15 @@ Apply one shared visual grammar across HTML, DOCX, PPTX, and PDF. Treat the bund
 8. For a new deliverable, run `scripts/init_deliverable.py` to seed a safe output folder, brand assets, brief manifest, content map, QA checklist, and optional starter artifacts. Skip only when editing an existing user file.
 9. Select one composition pattern from the format mapping. Do not invent a new visual direction unless the user explicitly asks.
 10. Produce the artifact with the matching document, presentation, PDF, or site tooling and follow that tool's own render-and-verify workflow.
-11. Render the result and inspect it visually. Revise until it passes the Deepstone QA gates and update the generated `qa-checklist.json`.
+11. For HTML, keep the complete editable source folder and run `scripts/build_standalone_html.py SOURCE/index.html` after the final source edit. The script must create a clearly named, client-ready file such as `Project_Document_DeepStone_Standalone.html`; treat that file as the primary deliverable.
+12. Render the result and inspect it visually. For HTML, render both `index.html` and the named standalone file and verify visual parity. Revise until both pass the Deepstone QA gates and update the generated `qa-checklist.json`.
 
 ## Non-negotiables
 
 - Preserve the Deepstone signature: editorial whitespace, dark navy anchors, restrained royal-blue emphasis, thin rules, modular information blocks, precise alignment, EB Garamond for Latin text, and Swei B2 Serif CJKtc for Chinese text.
 - In document-style Word and PDF pages, place the DeepStone logo once per page at the upper-right, aligned to the right page margin. Use the white logo on dark pages and the color logo on light pages; never place the document logo at upper-left.
-- For every client-facing document, proposal, report, presentation, and exported PDF, apply the mandatory first-page cover copy defined in `references/design-system.md`: project name plus year above the title, `Reinventing Real-World Value Onchain` immediately above the main title, and `仅供授权客户参考` in the lower-right confidentiality position.
+- For every client-facing document, proposal, report, presentation, and exported PDF, apply the mandatory first-page cover copy defined in `references/design-system.md`: project name plus year above the title, `Reinventing Real-World Value Onchain` immediately above the main title, and the language-aware lower-right confidentiality statement. Use `仅供授权客户参考` only for Chinese-only documents; use `For Authorized Clients Only` for English and Chinese-English bilingual documents.
+- For every HTML deliverable, preserve the complete editable source folder and also deliver a self-contained, meaningfully named standalone file with all local presentation assets embedded. Use the pattern `{Project}_{Document}_DeepStone_Standalone.html`; never present `index.html` as the primary client delivery. Do not replace or delete the source folder after building the standalone file.
 - Use one dominant message per page, slide, or screen section.
 - Keep decoration subordinate to information. Never add generic gradients, floating blobs, glassmorphism, excessive shadows, or random iconography.
 - Use no more than one primary accent color and one optional status color in a composition.
@@ -36,7 +38,7 @@ Apply one shared visual grammar across HTML, DOCX, PPTX, and PDF. Treat the bund
 
 ## Format routing
 
-- HTML or website: generate semantic, responsive HTML/CSS. Run `scripts/export_tokens.py --format css` when a CSS variable file is useful.
+- HTML or website: generate semantic, responsive HTML/CSS. Run `scripts/export_tokens.py --format css` when a CSS variable file is useful. After final source edits, run `scripts/build_standalone_html.py OUTPUT_DIR/index.html`; deliver the generated client-ready standalone file first, with `OUTPUT_DIR/` as the editable-source companion.
 - Word/DOCX: use the Documents workflow. Use section bands, rules, tables, and restrained callouts rather than web-like cards everywhere.
 - PowerPoint/PPTX: use the Presentations workflow. Build slide masters/layouts conceptually from the shared tokens; prioritize projection readability.
 - PDF: create from the most semantically suitable source—HTML for screen-first reports, DOCX for editorial documents, or PPTX for landscape decks—then render and inspect every page.
@@ -49,6 +51,7 @@ When important brand assets are missing, use a clearly labeled placeholder and c
 For each delivered artifact, report:
 
 - format and file path;
+- for HTML, both the complete source-folder path and standalone-file path;
 - content or assumptions used;
 - provisional visual values, if any;
 - render/QA result;
@@ -66,4 +69,5 @@ For each delivered artifact, report:
 - `references/brief-and-qa.md`: brief schema, prompt examples, and QA gates.
 - `scripts/export_tokens.py`: validate tokens and export CSS or a normalized theme manifest.
 - `scripts/init_deliverable.py`: create a reusable project scaffold from a natural-language brief.
+- `scripts/build_standalone_html.py`: embed local logos, fonts, images, stylesheets, icons, and scripts into one meaningfully named, client-ready standalone HTML while preserving the editable source folder.
 - `assets/templates/`: editable HTML, DOCX, and PPTX starters plus a PDF visual reference.

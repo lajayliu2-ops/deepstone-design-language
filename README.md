@@ -1,5 +1,7 @@
 # Deepstone Design Language
 
+当前团队试用版本：`v1.3.1`
+
 这是 DeepStone 团队共用的 Codex Skill，用于按照统一的品牌设计语言制作或改版：
 
 - HTML 页面
@@ -41,6 +43,14 @@
 ```text
 用 $deepstone-design-language 根据这份自然语言需求制作一个响应式 HTML 页面。
 ```
+
+HTML 任务会同时保留完整可编辑源文件夹，并生成一个已经内嵌本地字体、Logo、图片、CSS 和 JavaScript 的客户可转发文件，例如：
+
+```text
+Paneco_Valuation_Report_2026_DeepStone_Standalone.html
+```
+
+对客户或团队发送时优先使用这个命名好的 `*_DeepStone_Standalone.html`；`index.html` 只作为可编辑源文件保留。
 
 ## 目录说明
 

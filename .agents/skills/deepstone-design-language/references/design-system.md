@@ -1,6 +1,6 @@
 # Deepstone Design System
 
-Status: `v1.1.1 Figma-calibrated core + document placement and Word font-hardening rules`. Core homepage colors, typography, layout, buttons, cards, gradients, and bilingual behavior were read from the source Figma nodes listed in `assets/tokens.json`. Tokens marked as derived remain adaptable where the Figma file has no named variable.
+Status: `v1.3.1 Figma-calibrated core + localized confidentiality + client-ready standalone HTML delivery`. Core homepage colors, typography, layout, buttons, cards, gradients, and bilingual behavior were read from the source Figma nodes listed in `assets/tokens.json`. Tokens marked as derived remain adaptable where the Figma file has no named variable.
 
 ## 1. Brand character
 
@@ -106,7 +106,7 @@ Apply this three-part copy system to the first page of every client-facing propo
 
 1. Top project identifier: `{项目名称} · {年份}`. Replace generic labels such as `Client Feasibility Proposal`, `Company Presentation`, or `Proposal`.
 2. Brand proposition immediately above the main title: `Reinventing Real-World Value Onchain`. Do not replace it with `DeepStone`, a document type, or a client name.
-3. Lower-right confidentiality statement: `仅供授权客户参考`. Do not use product-positioning copy in this position.
+3. Lower-right confidentiality statement: use `仅供授权客户参考` only when the document is Chinese-only. Use `For Authorized Clients Only` when the document is English or Chinese-English bilingual. Do not use product-positioning copy in this position.
 
 Keep the official DeepStone logo separately in the cover header. On Word and PDF covers, anchor it at the upper-right; use the white asset on a navy/dark cover and the color asset on a light cover. The proposition complements the logo and never substitutes for the logo asset. This cover rule does not apply to ordinary website landing pages unless the page intentionally represents a document cover.
 
